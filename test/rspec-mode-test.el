@@ -29,3 +29,9 @@
     (should-not (rspec--test-compilation-match-p example 'error))
     (should-not (rspec--test-compilation-match-p example 'info))
     (should (rspec--test-compilation-match-p example 'warning))))
+
+(ert-deftest rspec--test-screenshot ()
+  "matches screenshot"
+  (should (rspec--test-compilation-match-p "     [Screenshot Image]: ./capybara/some_file_123.png" 'info))
+  (should (rspec--test-compilation-match-p "     [Screenshot]: ./capybara/some_file_123.png" 'info))
+  (should (rspec--test-compilation-match-p "     Image Screenshot: ./capybara/some_file_123.png" 'info)))
